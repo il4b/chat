@@ -1,0 +1,96 @@
+.text-white {
+
+    color: white;
+}
+
+/* .members-list {
+
+    background: white;
+    list-style-type: none;
+  
+}
+
+.members-list li a {
+
+    text-decoration: none;
+} */
+
+.messages-list {
+    padding-left: 0;
+}
+.chat-container {
+    padding-right: 0;
+    padding-left: 0;
+   
+}
+
+.messages-container {
+   
+    padding-right: 0;
+    padding-left: 0;
+    
+}
+
+.chat-messages {
+
+    height: 100vh;
+}
+
+.chat-container .form-row {
+    
+     margin-right: 0;
+     margin-left: 0;
+   
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.members-list .avatar {
+
+    max-height: 80px;
+}
+
+
+/* .badge {
+
+    background: red;
+    color: white;
+} */
+
+.messages-list {
+    list-style-type: none;
+}
+
+.chat-body {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.messages-list .avatar {
+
+    max-height: 50px;
+}
+
+.message-send textarea {
+
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.message-send textarea:focus {
+
+    border: 2px solid #17a2b8;
+}
+
+.btn-send {
+
+    border-radius: 100%;
+    font-size: x-large;
+
+}
+
+
+

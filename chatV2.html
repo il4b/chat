@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!--Customize CSS-->
+    <link rel="stylesheet" href="chat.css">
+    <style>
+    .text-white {
+
+    color: white;
+}
+
+/* .members-list {
+
+    background: white;
+    list-style-type: none;
+  
+}
+
+.members-list li a {
+
+    text-decoration: none;
+} */
+
+
+
+.messages-list {
+    padding-left: 0;
+}
+.chat-container {
+    display: none;
+    padding-right: 0;
+    padding-left: 0;
+   
+}
+
+.messages-container {
+   
+    padding-right: 0;
+    padding-left: 0;
+    
+}
+
+.chat-messages {
+
+    height: 100vh;
+}
+
+.chat-container .form-row {
+    
+     margin-right: 0;
+     margin-left: 0;
+   
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.members-list .avatar {
+
+    max-height: 80px;
+}
+
+
+/* .badge {
+
+    background: red;
+    color: white;
+} */
+
+.messages-list {
+    list-style-type: none;
+}
+
+.chat-body {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.messages-list .avatar {
+
+    max-height: 50px;
+}
+
+.message-send textarea {
+
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.message-send textarea:focus {
+
+    border: 2px solid #17a2b8;
+}
+
+.btn-send {
+
+    border-radius: 100%;
+    font-size: x-large;
+
+}
+
+.nick-input  {
+
+    width: 200px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    color: white;
+}
+
+
+
+    </style>
+
+<title>Chat Geo</title>
+  </head>
+  <body class="bg-dark">
+    <div id="nickWrap" class="container-fluid">
+        <form id="nickForm" action="" class="d-flex flex-column align-items-center justify-content-center mt-5">
+            <p class = "h1 text-center my-5 text-white">Please enter your name</p>
+            <input id="nickName" type="text" class="nick-input"> <br>
+            <button type="submit" class="btn btn-info">Enter the chat</button>
+        </form>
+    </div>
+
+    <div class="container-fluid chat-container chat-row bg-dark pt-3">
+        <div class="container-fluid messages-container">
+            <div class="row chat-messages mx-4 align-items-end">
+                <ul id="messages" class="messages-list mr-2 py-4 mb-5">
+
+                <!-- LI ELEMENT MODEL -->
+
+                    <!-- <li class="d-flex justify-content-around mb-3 pb-3">
+                        <img src="https://picsum.photos/50" alt="" class="avatar mr-3">
+                        <div class="chat-body p-2 w-100">
+                            <strong class="member-name">Jon Snow</strong> <br>
+                            <small class="text-muted last-message">Yesterday</small>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptate. Voluptas, natus. Deserunt fugit accusamus, assumenda voluptatibus commodi facilis placeat eos velit. Cumque accusamus quaerat molestias! Commodi fuga in voluptatum?</p>
+                        </div>
+                    </li>     -->
+                </ul>
+            </div>
+        
+        </div>
+        <form id="chatForm" action="" class="form-row bg-light align-items-center justify-content-end fixed-bottom message-send mt-2">           
+            <div class="form-group col-10 pt-2 text-center">
+                <textarea class="form-control" id="m" rows="1" placeholder="Type your message here..."></textarea>
+            </div>
+            <div class="col-2 text-start">
+                <button type="submit" class="btn btn-info btn-send"> <i class="fas fa-chevron-circle-right"></i></button>
+            </div>                
+        </form>       
+    </div>
+
+    
+
+   
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+     <!-- Optional JavaScript -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+  $(function () {
+
+    var socket = io.connect();
+
+     $('#nickForm').submit(function(e){
+
+         e.preventDefault(); 
+         socket.emit('new user', $('#nickName').val(), function(data){
+
+             if(data){
+                 $('#nickWrap').hide();
+                 $('.chat-container').show();
+             } else {
+                 alert("The username is already taken. Please try again.");
+             }
+
+         });
+         $('#nickName').val('');
+     }); 
+   
+
+    $('#chatForm').submit(function(e){
+      e.preventDefault(); // prevents page reloading
+      socket.emit('send message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+
+    
+    
+
+    socket.on('new message', function(data){
+
+    // Create li element 
+
+    var liElt = document.createElement("li");
+    liElt.classList.add("d-flex", "justify-content-around", "mb-3","pb-3");
+
+    //Create chat body
+    var chatBody = document.createElement("div");
+    chatBody.classList.add("chat-body","p-2","w-100");
+
+    // Create nickname 
+    var nickname = document.createElement("strong");
+    nickname.textContent = data.nick;
+
+    //Create date 
+
+    var date = document.createElement("small");
+    date.classList.add("texte-muted");
+    date.textContent = Date();
+
+    var hr = document.createElement("hr");
+    var br = document.createElement("br");
+
+    // Create new message
+
+    var newMessage = document.createElement("p"); 
+    newMessage.textContent = data.msg;
+
+    // Create new element to add to the list 
+    chatBody.appendChild(nickname);
+    chatBody.appendChild(br);
+    chatBody.appendChild(date);
+    chatBody.appendChild(hr); 
+    chatBody.appendChild(newMessage);
+    liElt.appendChild(chatBody); 
+    $('#messages').append(liElt);
+
+    // scroll window to bottom 
+    window.scrollTo(0, document.body.scrollHeight);
+    });
+  });
+</script>
+  </body>
+</html>

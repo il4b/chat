@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="chat.css">
+
+    <title>Chat Geo</title>
+  </head>
+  <body>
+    <div class="container-fluid chat-container">
+        <h1 class="text-center my-3">Chat Geo</h1>
+
+        <div class="row chat-row bg-dark justify-content-around mx-auto py-3">
+
+            <div class="col-md-4 left-col">
+                <h2 class="text-white">Members</h2>
+                    <div class="chat-members">
+                        <ul class="members-list p-2">
+                            <li class="py-2">
+                                <a href="#" class="d-flex member-content">
+                                    <img src="https://picsum.photos/80" alt="" class="avatar p-2">
+                                    <div class="text-small p-2">
+                                        <p class="member-name mb-10">Jon Snow</p>
+                                        <p class="last-message text-muted">I know nothing !</p>
+                                    </div>
+                                    <div class="member-footer p-2 ml-auto">
+                                        <p class="text-muted">Now</p>
+                                        <span class="badge">1</span>
+                                    </div>
+                                </a>
+                                
+                            </li>
+                            <hr>
+                            <li class="py-2">
+                                <a href="#" class="d-flex member-content">
+                                    <img src="https://picsum.photos/80" alt="" class="avatar p-2">
+                                    <div class="text-small p-2">
+                                        <p class="member-name mb-10">Sansa Stark</p>
+                                        <p class="last-message text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum error, non architecto aut natus vitae, reiciendis, nemo voluptates maiores molestiae consequatur eos officiis magnam. Reprehenderit similique doloribus illo nesciunt officia!</p>
+                                    </div>
+                                    <div class="member-footer p-2 ">
+                                        <p class="text-muted">Now</p>
+                                        <span class="badge">1</span>
+                                    </div>
+                                </a>
+                                
+                            </li>
+                            <hr>
+                            <li class="py-2">
+                                <a href="#" class="d-flex justify-content-start member-content">
+                                    <img src="https://picsum.photos/80" alt="" class="avatar">
+                                    <div class="text-small mx-2">
+                                        <p class="member-name mb-10">Arya Stark</p>
+                                        <p class="last-message text-muted">Valhar Morghulis</p>
+                                    </div>
+                                    <div class="member-footer">
+                                        <p class="text-muted">Now</p>
+                                        <span class="badge">3</span>
+                                    </div>
+                                </a>
+                                
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="chat-messages">
+                    <ul class="messages-list">
+                        <li class="d-flex justify-content-around mb-3">
+                            <img src="https://picsum.photos/50" alt="" class="avatar mr-3">
+                            <div class="chat-body p-2">
+                                <div class="chat-header">
+                                    <strong class="member-name">Jon Snow</strong>
+                                    <small class="text-muted last-message">2 minutes ago</small>
+                                    <hr>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptate. Voluptas, natus. Deserunt fugit accusamus, assumenda voluptatibus commodi facilis placeat eos velit. Cumque accusamus quaerat molestias! Commodi fuga in voluptatum?</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex justify-content-around mb-3">
+                            <div class="chat-body p-2">
+                                <div class="chat-header">
+                                    <strong class="member-name">Sansa Stark</strong>
+                                    <small class="text-muted last-message">2 minutes ago</small>
+                                    <hr>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptate. Voluptas, natus. Deserunt fugit accusamus, assumenda voluptatibus commodi facilis placeat eos velit. Cumque accusamus quaerat molestias! Commodi fuga in voluptatum?</p>
+                                </div>
+                            </div>
+                            <img src="https://picsum.photos/50" alt="" class="avatar ml-3">
+                        </li>
+                        <li class="d-flex justify-content-around mb-3">
+                            <img src="https://picsum.photos/50" alt="" class="avatar mr-3">
+                            <div class="chat-body p-2">
+                                <div class="chat-header">
+                                    <strong class="member-name">Jon Snow</strong>
+                                    <small class="text-muted last-message">2 minutes ago</small>
+                                    <hr>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptate. Voluptas, natus. Deserunt fugit accusamus, assumenda voluptatibus commodi facilis placeat eos velit. Cumque accusamus quaerat molestias! Commodi fuga in voluptatum?</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-30">
+                        <form action="">
+                            <div class="send-message form-group">
+                            <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info">Send</button>
+                        </form>
+                            
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
