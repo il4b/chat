@@ -27,7 +27,8 @@ io.on('connection', function(socket){
         //push it into the array
         nicknames.push(socket.nickname);
 
-        io.sockets.emit('usernames', nicknames)
+        // send the array to client
+        io.sockets.emit('usernames', nicknames);
         
       }
 
@@ -37,7 +38,27 @@ io.on('connection', function(socket){
       
       io.emit('new message', {msg: data, nick: socket.nickname});
     });
+
+    function updateNicknames(){
+
+      
+
+    };
+    socket.on('disconnect', function(data){
+
+      // send name of disconnected user to client
+      io.emit('userOff', socket.nickname);
+      
+      // if the user never joined the room
+      if(!socket.nickname) return;
+
+      // if the user left the room, remove the nickname from the array
+      nicknames.splice(nicknames.indexOf(socket.nickname), 1);
+      
+    })
   });
+
+    
 
 http.listen(3000, function(){
   console.log('listening on *:3000');

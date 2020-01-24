@@ -187,6 +187,7 @@
              if(data){
                  $('#nickWrap').hide();
                  $('.chat-container').show();
+
              } else {
                  alert("The username is already taken. Please try again.");
              }
@@ -194,6 +195,42 @@
          });
          $('#nickName').val('');
      }); 
+
+    socket.on('usernames', function(data){
+        var lastUser = '';
+        
+
+        // loop the nicknames array
+
+        for(i=0; i < data.length; i++){
+            lastUser = data.length - 1;
+            lastUser = data[lastUser];        
+
+        }
+
+       
+
+        // display the last person who joined the chat
+
+        var liElt = document.createElement("li");
+            liElt.classList.add("d-flex", "justify-content-start", "mb-3","pb-3","text-white");
+            liElt.textContent = lastUser + " joined the chatroom";
+            $('#messages').append(liElt);
+            // scroll window to bottom 
+            window.scrollTo(0, document.body.scrollHeight);
+    });
+
+    // display the last person who left the chat
+    socket.on('userOff', function(data){
+
+        var liElt = document.createElement("li");
+            liElt.classList.add("d-flex", "justify-content-start", "mb-3","pb-3","text-white");
+            liElt.textContent = data + " left the chatroom";
+            $('#messages').append(liElt);
+            // scroll window to bottom 
+            window.scrollTo(0, document.body.scrollHeight);
+
+    });
    
 
     $('#chatForm').submit(function(e){
@@ -223,9 +260,13 @@
 
     //Create date 
 
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+
     var date = document.createElement("small");
     date.classList.add("texte-muted");
-    date.textContent = Date();
+    date.textContent = hours + " hours and " + minutes + " minutes";
 
     var hr = document.createElement("hr");
     var br = document.createElement("br");
