@@ -102,10 +102,15 @@
     border: 2px solid #17a2b8;
 }
 
+.message-send .col-2 {
+    padding: 0;
+}
+
 .btn-send {
 
     border-radius: 100%;
     font-size: x-large;
+    
 
 }
 
@@ -138,19 +143,8 @@
     <div class="container-fluid chat-container chat-row bg-dark pt-3">
         <div class="container-fluid messages-container">
             <div class="row chat-messages mx-4 align-items-end">
-                <ul id="messages" class="messages-list mr-2 py-4 mb-5">
+                <ul id="messages" class="col messages-list py-4 mb-5">
 
-                <!-- LI ELEMENT MODEL -->
-
-                    <!-- <li class="d-flex justify-content-around mb-3 pb-3">
-                        <img src="https://picsum.photos/50" alt="" class="avatar mr-3">
-                        <div class="chat-body p-2 w-100">
-                            <strong class="member-name">Jon Snow</strong> <br>
-                            <small class="text-muted last-message">Yesterday</small>
-                            <hr>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptate. Voluptas, natus. Deserunt fugit accusamus, assumenda voluptatibus commodi facilis placeat eos velit. Cumque accusamus quaerat molestias! Commodi fuga in voluptatum?</p>
-                        </div>
-                    </li>     -->
                 </ul>
             </div>
         
@@ -159,7 +153,7 @@
             <div class="form-group col-10 pt-2 text-center">
                 <textarea class="form-control" id="m" rows="1" placeholder="Type your message here..."></textarea>
             </div>
-            <div class="col-2 text-start">
+            <div class="col-2 text-center">
                 <button type="submit" class="btn btn-info btn-send"> <i class="fas fa-chevron-circle-right"></i></button>
             </div>                
         </form>       
@@ -187,6 +181,7 @@
              if(data){
                  $('#nickWrap').hide();
                  $('.chat-container').show();
+                 $('#m').focus();
 
              } else {
                  alert("The username is already taken. Please try again.");
@@ -232,6 +227,18 @@
 
     });
    
+   // press enter to submit the message
+
+    $('#chatForm').keypress(function (e) {
+       
+        
+        if (e.which == 13) {
+
+            e.preventDefault();
+            $('#chatForm').submit();
+            
+        }
+    })
 
     $('#chatForm').submit(function(e){
       e.preventDefault(); // prevents page reloading
@@ -266,7 +273,7 @@
 
     var date = document.createElement("small");
     date.classList.add("texte-muted");
-    date.textContent = hours + " hours and " + minutes + " minutes";
+    date.textContent = hours + ":" + minutes;
 
     var hr = document.createElement("hr");
     var br = document.createElement("br");
