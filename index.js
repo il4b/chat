@@ -3,8 +3,10 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var nicknames = [];
 
+app.set('views engine', 'twig');
+
 app.get('/', function(req, res){
-    res.sendFile(__dirname + '/chatV2.html');
+    res.render('index.html.twig');
   });
 
 
